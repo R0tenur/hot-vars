@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0F8FABCB-109
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotVars", "src\HotVars\HotVars.csproj", "{2295583A-CF89-46AC-8301-1D96C024FAA5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{88F483FC-50CC-42C1-81B2-3A0782B1DF63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotVars.Test", "test\HotVars.Test\HotVars.Test.csproj", "{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,13 @@ Global
 		{2295583A-CF89-46AC-8301-1D96C024FAA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2295583A-CF89-46AC-8301-1D96C024FAA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2295583A-CF89-46AC-8301-1D96C024FAA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2295583A-CF89-46AC-8301-1D96C024FAA5} = {0F8FABCB-1097-44AB-9B6F-70210450B8A9}
+		{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC} = {88F483FC-50CC-42C1-81B2-3A0782B1DF63}
 	EndGlobalSection
 EndGlobal
