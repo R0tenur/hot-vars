@@ -35,6 +35,8 @@ public class HotNumber<T> : Hot<T>
 
     public static HotString operator +(string value, HotNumber<T> hot) => CalculateSum(value, hot);
 
+    public static implicit operator HotNumber<T>(T v) => new HotNumber<T>(v);
+
     public override bool Equals(object? obj) => Value.Equals(obj);
 
     private static HotNumber<T> CalculateSum(Hot<T> hot, Hot<T> value)
