@@ -4,7 +4,7 @@ namespace HotVars;
 
 public class HotString : Hot<string>
 {
-    internal HotString(string value)
+    public HotString(string value)
         : base(value) { }
 
     public static HotString operator +(HotString hot, HotString value) => CalculateSum(hot, value);
@@ -71,12 +71,7 @@ public class HotString : Hot<string>
 
     public override bool Equals(object? obj) => Value.Equals(obj);
 
-    public static implicit operator HotString(string value) => new HotString(value);
-
-    public static implicit operator string(HotString value) => value.Value;
-
-    public static implicit operator HotString(HotInterpolatedStringHandler builder) =>
-        builder.ToHotString();
+    public static HotString From(HotInterpolatedStringHandler builder) => builder.ToHotString();
 
     private static HotString CalculateSum(HotString hot, HotString value)
     {
@@ -106,6 +101,8 @@ public class HotString : Hot<string>
 
     public override int GetHashCode()
     {
-        throw new NotImplementedException();
+        return Value.GetHashCode();
     }
+
+    public override string ToString() => Value;
 }

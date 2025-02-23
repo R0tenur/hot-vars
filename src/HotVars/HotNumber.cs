@@ -33,6 +33,9 @@ public class HotNumber<T> : Hot<T>
     public static HotString operator +(HotString hot, HotNumber<T> value) =>
         CalculateSum(hot, value);
 
+    public static HotString operator +(HotNumber<T> value, HotString hot) =>
+        CalculateSum(value, hot);
+
     public static HotString operator +(string value, HotNumber<T> hot) => CalculateSum(value, hot);
 
     public static implicit operator HotNumber<T>(T v) => new HotNumber<T>(v);
@@ -82,6 +85,16 @@ public class HotNumber<T> : Hot<T>
 
         hot.PropertyChanged += (sender, args) => sum.SetValue(hot.Value + value.Value);
         value.PropertyChanged += (sender, args) => sum.SetValue(hot.Value + value.Value);
+
+        return sum;
+    }
+
+    private static HotString CalculateSum(Hot<T> value, HotString hot)
+    {
+        var sum = new HotString(value.Value + hot.Value);
+
+        hot.PropertyChanged += (sender, args) => sum.SetValue(value.Value + hot.Value);
+        value.PropertyChanged += (sender, args) => sum.SetValue(value.Value + hot.Value);
 
         return sum;
     }
