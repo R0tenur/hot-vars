@@ -7,3 +7,12 @@ hotNumber.PropertyChanged += (sender, args) => Console.WriteLine("HotNumber chan
 hotNumber.SetValue(43); // HotNumber changed: 43
 
 Console.WriteLine();
+
+Console.WriteLine("Example 2: HotString");
+HotString hotString = "Hello ";
+
+Console.WriteLine(hotString); // Hello
+hotString.PropertyChanged += (sender, args) => Console.WriteLine("HotString changed: " + hotString);
+hotString.SetValue(hotString + "World"); // HotString changed: Hello World
+
+Console.WriteLine();
