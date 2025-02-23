@@ -7,10 +7,6 @@ public class HotString : Hot<string>
     internal HotString(string value)
         : base(value) { }
 
-    public static HotString From(HotInterpolatedStringHandler builder) => builder.ToHotString();
-
-    public static HotString From(string value) => new(value);
-
     public static HotString operator +(HotString hot, HotString value) => CalculateSum(hot, value);
 
     public static HotString operator +(HotString hot, string value) => CalculateSum(hot, value);
