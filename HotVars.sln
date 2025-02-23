@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{88F483FC-5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotVars.Test", "test\HotVars.Test\HotVars.Test.csproj", "{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{32850142-F605-4354-B215-32C50DD59AB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotVars.Sample", "sample\HotVars.Sample\HotVars.Sample.csproj", "{EEDAB623-224E-4DED-B5CC-191B6F55B199}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,9 +32,14 @@ Global
 		{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEDAB623-224E-4DED-B5CC-191B6F55B199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEDAB623-224E-4DED-B5CC-191B6F55B199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEDAB623-224E-4DED-B5CC-191B6F55B199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDAB623-224E-4DED-B5CC-191B6F55B199}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2295583A-CF89-46AC-8301-1D96C024FAA5} = {0F8FABCB-1097-44AB-9B6F-70210450B8A9}
 		{B0C0C7C5-D512-40B1-8BB9-01EF5E2C4FBC} = {88F483FC-50CC-42C1-81B2-3A0782B1DF63}
+		{EEDAB623-224E-4DED-B5CC-191B6F55B199} = {32850142-F605-4354-B215-32C50DD59AB4}
 	EndGlobalSection
 EndGlobal
