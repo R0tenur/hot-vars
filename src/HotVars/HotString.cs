@@ -43,7 +43,7 @@ public class HotString : Hot<string>
 
     public static HotString operator +(HotString hot, BigInteger value) => CalculateSum(hot, value);
 
-    public static HotString operator +(string value, HotString hot) => CalculateSum(hot, value);
+    public static HotString operator +(string value, HotString hot) => CalculateSum(value, hot);
 
     public static HotString operator +(sbyte value, HotString hot) => CalculateSum(hot, value);
 
@@ -95,6 +95,11 @@ public class HotString : Hot<string>
     private static HotString CalculateSum(HotString hot, string value)
     {
         return new HotString(hot.Value + value);
+    }
+
+    private static HotString CalculateSum(string value, HotString hot)
+    {
+        return new HotString(value + hot.Value);
     }
 
     private static HotString CalculateSum<T>(HotString hot, T value)
