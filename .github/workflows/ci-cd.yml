@@ -1,52 +1,41 @@
 name: CI/CD
-    
-    on:
-    push:
+
+on:
+  push:
     branches: [ '*' ]
-    pull_request:
+  pull_request:
     branches: [ '*' ]
-    create:
+  create:
     tags:
-    - v*
-    jobs:
-    build:
+      - v*
+jobs:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
-    uses: actions/setup-dotnet@v1
-    with:
-    dotnet-version: 9.0.101
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 9.0.x
     - name: Restore dependencies
-    run: dotnet restore
+      run: dotnet restore
     - name: Build
-    run: dotnet build --no-restore
+      run: dotnet build --no-restore
     - name: Test
-    run: dotnet test --no-build --collect:"XPlat Code Coverage"
+      run: dotnet test --no-build --collect:"XPlat Code Coverage"
     - name: Pack
-    run: dotnet pack ./src/HotVars/HotVars.csproj -c release -o ./dist
+      run: dotnet pack ./src/HotVars/HotVars.csproj -c release -o ./dist
     - name: Publish code coverage
-    uses: codecov/codecov-action@v1
-    with:
-    token: ${{ secrets.CODECOV_TOKEN }}
-    file: "**/coverage.cobertura.xml"
-    flags: unittests
-    name: codecov-umbrella
-    fail_ci_if_error: true
-    verbose: true
-    - name: Create Release
-    if: startsWith(github.ref, 'refs/tags/v')
-    id: create_release
-    uses: actions/create-release@v1.0.0
-    env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    with:
-    tag_name: ${{ github.ref }}
-    release_name: Release ${{ github.ref }}
-    draft: false
-    prerelease: false
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: "**/coverage.cobertura.xml"
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
+        verbose: true
     - name: Push to nuget
-    if: startsWith(github.ref, 'refs/tags/v')
-    env:
-    NUGET_API_KEY: ${{ secrets.NugetApiKey }}
-    run: cd dist && dotnet nuget push "*.nupkg" --api-key "$NUGET_API_KEY" --skip-duplicate --source https://www.nuget.org/api/v2/package
+      if: startsWith(github.ref, 'refs/tags/v')
+      env:
+        NUGET_API_KEY: ${{ secrets.NugetApiKey }}
+      run: cd dist && dotnet nuget push "*.nupkg" --api-key "$NUGET_API_KEY" --skip-duplicate --source https://www.nuget.org/api/v2/package
