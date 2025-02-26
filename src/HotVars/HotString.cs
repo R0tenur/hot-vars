@@ -7,6 +7,30 @@ public class HotString : Hot<string>
     public HotString(string value)
         : base(value) { }
 
+    internal HotString(HotInterpolatedStringHandler builder)
+        : base(string.Empty)
+    {
+        BuildFromFragments(builder);
+
+        builder.PropertyChanged += (sender, args) =>
+        {
+            BuildFromFragments(builder);
+        };
+    }
+
+    private void BuildFromFragments(HotInterpolatedStringHandler builder)
+    {
+        var value = string.Empty;
+        foreach (var fragment in builder._fragments)
+        {
+            value += fragment();
+        }
+        _value = value;
+        OnPropertyChanged(nameof(Value));
+    }
+
+    public static HotString Empty => new HotString(string.Empty);
+
     public static HotString operator +(HotString hot, HotString value) => CalculateSum(hot, value);
 
     public static HotString operator +(HotString hot, string value) => CalculateSum(hot, value);

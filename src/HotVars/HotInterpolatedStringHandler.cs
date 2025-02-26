@@ -1,30 +1,42 @@
+using System.ComponentModel;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
 namespace HotVars;
 
 [InterpolatedStringHandler]
-public struct HotInterpolatedStringHandler(int literalLength, int formattedCount)
+public class HotInterpolatedStringHandler(int literalLength, int formattedCount)
+    : INotifyPropertyChanged
 {
     private HotString Builder { get; set; } = new HotString("");
 
-    public void AppendLiteral(string s) => Builder = Builder + s;
+    internal readonly List<Func<string>> _fragments = [];
+    internal readonly List<Func<string>> _formatted = [];
 
-    internal readonly HotString ToHotString() => Builder;
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    public void OnPropertyChanged(string propertyName) =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+    public void AppendLiteral(string s) => _fragments.Add(() => s);
+
+    public HotString ToHotString() => new(this);
 
     public void AppendFormatted(HotString t)
     {
-        Builder += t;
+        _fragments.Add(() => t.Value);
+        t.PropertyChanged += (sender, args) => OnPropertyChanged(string.Empty);
     }
 
     public void AppendFormatted(string t)
     {
-        Builder += t;
+        _fragments.Add(() => t);
     }
 
     public void AppendFormatted<T>(HotNumber<T> t)
         where T : INumber<T>
     {
-        Builder += t;
+        _fragments.Add(() => t.ToString());
+        t.PropertyChanged += (sender, args) => OnPropertyChanged("value");
     }
 }

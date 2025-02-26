@@ -19,8 +19,13 @@ hotString.SetValue(hotString.Value + "World"); // HotString changed: Hello World
 Console.WriteLine();
 
 Console.WriteLine("Example 3: Hot Interpolated String");
-var hotInterpolatedString = HotString.From($"Hello {hotNumber}");
-Console.WriteLine(hotInterpolatedString); // Hello 43
+var increment = new HotNumber<int>(1);
+var name = new HotString("Alice");
+var hotInterpolatedString = HotString.From($"Hello {name}! {increment}"); // Hello Alice! 1
+
+Console.WriteLine(hotInterpolatedString); // Hello Alice! 1
 hotInterpolatedString.PropertyChanged += (sender, args) =>
     Console.WriteLine("HotInterpolatedString changed: " + hotInterpolatedString);
-hotNumber.SetValue(44); // HotInterpolatedString changed: Hello 44
+increment.SetValue(2); // HotInterpolatedString changed: Hello Alice! 2
+name.SetValue("Bob"); // HotInterpolatedString changed: Hello Bob! 2
+increment.SetValue(3); // HotInterpolatedString changed: Hello Bob! 3

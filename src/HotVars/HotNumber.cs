@@ -5,7 +5,7 @@ namespace HotVars;
 public class HotNumber<T> : Hot<T>
     where T : INumber<T>
 {
-    internal HotNumber(T value)
+    public HotNumber(T value)
         : base(value) { }
 
     public static bool operator <(HotNumber<T> hot, T Value) => hot.Value < Value;

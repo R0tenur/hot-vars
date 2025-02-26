@@ -4,7 +4,7 @@ namespace HotVars;
 
 public class Hot<T> : INotifyPropertyChanged
 {
-    private T _value;
+    protected T _value;
     public T Value
     {
         get => _value;
