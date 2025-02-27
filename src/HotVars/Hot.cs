@@ -15,7 +15,7 @@ public class Hot<T> : INotifyPropertyChanged
         }
     }
 
-    internal Hot(T value) => _value = value;
+    public Hot(T value) => _value = value;
 
     public void SetValue(T value) => Value = value;
 
