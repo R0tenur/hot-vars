@@ -19,6 +19,8 @@ public class Hot<T> : INotifyPropertyChanged
 
     public void SetValue(T value) => Value = value;
 
+    public void PatchValue(Func<T, T> patcher) => Value = patcher(_value);
+
     public event PropertyChangedEventHandler? PropertyChanged;
 
     protected void OnPropertyChanged() =>

@@ -1,6 +1,8 @@
+using System.Collections;
+
 namespace HotVars;
 
-public class HotList<T> : Hot<List<T>>
+public class HotList<T> : Hot<List<T>>, IEnumerable<T>
 {
     internal HotList(List<T> value)
         : base(value) { }
@@ -99,4 +101,14 @@ public class HotList<T> : Hot<List<T>>
     public int IndexOf(T item) => Value.IndexOf(item);
 
     public bool Contains(T item) => Value.Contains(item);
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        return Value.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 }
