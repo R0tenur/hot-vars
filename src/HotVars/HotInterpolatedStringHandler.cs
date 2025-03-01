@@ -39,4 +39,10 @@ public class HotInterpolatedStringHandler(int literalLength, int formattedCount)
         _fragments.Add(() => t.ToString());
         t.PropertyChanged += (sender, args) => OnPropertyChanged("value");
     }
+
+    public void AppendFormatted<T>(Hot<T> t)
+    {
+        _fragments.Add(() => t.ToString());
+        t.PropertyChanged += (sender, args) => OnPropertyChanged("value");
+    }
 }
