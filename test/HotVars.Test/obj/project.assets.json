@@ -564,7 +564,7 @@
           "build/net6.0/xunit.runner.visualstudio.props": {}
         }
       },
-      "HotVars/1.0.0": {
+      "HotVars/1.0.3": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "compile": {
@@ -1345,7 +1345,7 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "HotVars/1.0.0": {
+    "HotVars/1.0.3": {
       "type": "project",
       "path": "../../src/HotVars/HotVars.csproj",
       "msbuildProject": "../../src/HotVars/HotVars.csproj"
@@ -1354,7 +1354,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "FakeItEasy >= 8.3.0",
-      "HotVars >= 1.0.0",
+      "HotVars >= 1.0.3",
       "Microsoft.NET.Test.Sdk >= 17.11.1",
       "Shouldly >= 4.3.0",
       "coverlet.collector >= 6.0.2",

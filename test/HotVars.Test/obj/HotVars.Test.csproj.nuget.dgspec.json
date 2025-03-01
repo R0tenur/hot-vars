@@ -5,7 +5,7 @@
   },
   "projects": {
     "/Users/jens/projects/hot-vars/src/HotVars/HotVars.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.3",
       "restore": {
         "projectUniqueName": "/Users/jens/projects/hot-vars/src/HotVars/HotVars.csproj",
         "projectName": "HotVars",
