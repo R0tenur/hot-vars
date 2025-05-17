@@ -4,7 +4,10 @@ namespace HotVars;
 
 public class HotList<T> : Hot<List<T>>, IEnumerable<T>
 {
-    internal HotList(List<T> value)
+    public HotList()
+        : base(new List<T>()) { }
+
+    public HotList(List<T> value)
         : base(value) { }
 
     public void Add(T item)
